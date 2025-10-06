@@ -36,6 +36,6 @@ gsap.to("#main", {
         marker: true,
         start: "top -25%",
         end: "top -70%",
-        scrub: 2
+        scrub: 3 ,
     }
 });
