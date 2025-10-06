@@ -143,6 +143,6 @@ video {
     scroll-behavior: 15;
 }
 #page2:hover{
-    color:  gold;
+    color:  #95C11E;
     transition: .4s;
 }
