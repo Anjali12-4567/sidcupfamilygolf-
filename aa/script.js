@@ -39,3 +39,35 @@ gsap.to("#main", {
         scrub: 3 ,
     }
 });
+
+// About-us image hover/touch animation
+var aboutImgs = document.querySelectorAll('#about-us img');
+aboutImgs.forEach(function(img){
+    // desktop hover - gentle lift using GSAP
+    img.addEventListener('mouseenter', function(){
+        // quick pop up (grow) then settle back
+        gsap.killTweensOf(img);
+        var tl = gsap.timeline();
+        tl.to(img, { y: -16, scale: 1.16, rotation: -2, duration: 0.12, ease: 'power2.out' })
+          .to(img, { y: 0, scale: 1, rotation: 0, duration: 0.45, ease: 'elastic.out(1, 0.6)' });
+    });
+    img.addEventListener('mouseleave', function(){
+        gsap.killTweensOf(img);
+        gsap.to(img, { y: 0, scale: 1, rotation: 0, duration: 0.25, ease: 'power2.out' });
+    });
+
+    // touch support for mobile: toggle class on touchstart and remove on touchend
+    img.addEventListener('touchstart', function(e){
+        e.preventDefault();
+        img.classList.add('touch-active');
+        gsap.killTweensOf(img);
+        var tl2 = gsap.timeline();
+        tl2.to(img, { y: -14, scale: 1.14, duration: 0.1, ease: 'power2.out' })
+           .to(img, { y: 0, scale: 1, duration: 0.35, ease: 'power2.out' });
+    }, {passive: false});
+    img.addEventListener('touchend', function(){
+        img.classList.remove('touch-active');
+        gsap.killTweensOf(img);
+        gsap.to(img, { y: 0, scale: 1, duration: 0.2, ease: 'power2.out' });
+    });
+});

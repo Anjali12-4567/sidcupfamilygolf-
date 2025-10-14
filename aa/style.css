@@ -48,6 +48,60 @@ html, body {
     z-index: 10;
 }
 
+#about-us{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+    color: #fff;
+}
+#about-us img{
+    max-width: 320px; /* increased size */
+    width: 35%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+#about-us-in{
+    max-width: 520px;
+    width: 40%;
+    text-align: center;
+}
+#about-us-in h3{
+    font-size: 22px;
+    margin-bottom: 12px;
+}
+#about-us-in p{
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+@media (max-width: 800px){
+    #about-us{
+        flex-direction: column;
+        gap: 16px;
+    }
+    #about-us img{
+        width: 60%;
+        max-width: 400px;
+    }
+    #about-us-in{
+        width: 90%;
+    }
+}
+/* image hover / touch feedback */
+#about-us img{
+    transition: transform .25s ease, box-shadow .25s ease;
+    will-change: transform;
+}
+#about-us img:hover,
+#about-us img.touch-active{
+    transform: translateY(-8px) scale(1.03) rotate(-1deg);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+}
 #nav img {
     height: 80px;
 }
@@ -128,21 +182,23 @@ video {
     text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
 }
 #page2{
-    height: 100vh;
+    /* let content determine height so next section sits closer */
+    height: auto;
     width: 100%;
+    font-size: 48px; /* slightly smaller so it fits better */
+    color: #fff;
+    padding: 8px 0;
+    margin-bottom: 8px;
 }
-#page2{
-    
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40px;
-    font-weight: 900;
-    text-transform: uppercase;
-    scroll-behavior: 15;
-}
-#page2:hover{
-    color:  #95C11E;
+
+/* Hover styling for marquee text */
+#page2  h1:hover{
+    color: #95C11E;
     transition: .4s;
+}
+#about-us:hover{
+   img{
+    transition: 0.5s;
+   }
+
 }
